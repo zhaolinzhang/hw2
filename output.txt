@@ -1,0 +1,1026 @@
+Single keyword and line: 58        if (isUpper) return s.toUpperCase();
+64        if (isUpper) {
+73            while (s.indexOf("term ", termIndex + 1) != -1) {
+81                if (commaIndex != -1 && commaIndex < endTermIndex) endTermIndex = commaIndex;
+82                if (andIndex != -1 && andIndex < endTermIndex) endTermIndex = andIndex;
+89            while (s.indexOf("literal ", literalIndex + 1) != -1) {
+143        if (predicateExpr.indexOf("A") != -1) isUpper = true;
+159        for (int w = 0; w < alphabet.length(); w++) {
+160            if (alphaExpression.toLowerCase().contains(alphabet.substring(w, w + 1))) {
+182        if (!commaSepInfVals.equals("")) {
+183            for (int x = 1; x <= alphaTermsToCheckInf.length; x++) {
+187                for (String infVal : infVals) {
+188                    if (alphabetize(termToCheckInf).indexOf(alphabetize(infVal)) != -1)
+194                for (int y = 1; y <= alphaTermsToCheckInf.length; y++) {
+195                    if (y == x) continue;
+199                    for (String infVal2 : infVals) {
+200                        for (int z = 0; z < infVal2.length(); z++) {
+201                            if (termToCheckInf.indexOf(infVal2.substring(z, z + 1)) != -1) {
+202                                for (int a = 0; a < infVal2.length(); a++) {
+205                                    if (otherTermToCheck.equals(termToCheckInf))
+215                for (int y = 1; y <= termToCheckInf.length(); y++) {
+218                    for (String infVal : infVals) {
+219                        if (alphabetize(termToCheckInfCopy).indexOf(alphabetize(infVal)) != -1)
+230        for (int i = 0; i < alphaTerms.length; i++) {
+235            if (!copyOfAlphaTerms.add(alphaTerm))
+240            for (int y = 0; y < alphaTerm.length(); y++) {
+241                if (literals.indexOf(alphaTerm.substring(y, y + 1).toLowerCase()) == -1) {
+249            for (int j = 0; j < Math.pow(2, uniqueLiterals.length()); j++) {
+251                if (isPointFeasible(potential)) {
+258            for (String utp : utps) allUtps.add(utp);
+259            if (utps.size() == 0) {
+263            for (int y = 0; y < alphaTerm.length(); y++) {
+266                for (String nfp : nfps) {
+269                    if (!allNfpCountMap.containsKey(nfp)) allNfpCountMap.put(nfp, 1);
+272                if (nfps.size() == 0) {
+282        for (int j = 0; j < Math.pow(2, uniqueLiterals.length()); j++) {
+284            if (isPointFeasible(potential)) {
+285                if (choice.indexOf("SMOTP") == -1 && (allUtps.contains(potential) || allNfps.contains(potential))) {
+287                } else if (choice.indexOf("SMOTP") != -1 && (isATruePoint(potential, null) || allNfps.contains(potential))) {
+291                if (choice.indexOf("SMOTP") != -1 && isATruePoint(potential, null) && !allUtps.contains(potential)) {
+301        if (choice.equals("NFP Minimization")) {
+305        if (choice.equals("MUTP Minimization")) {
+309        if (choice.equals("CUTPNFP Minimization")) {
+313        if (choice.equals("MNFP Minimization")) {
+317        if (choice.equals("Minimal-MUMCUT/SMOTP Minimization")) {
+321        if (choice.equals("Minimal-MUMCUT Minimization")) {
+325        if (choice.equals("Fault Detection Maximization")) {
+329        if (choice.equals("MUTP")) {
+333        if (choice.equals("CUTPNFP")) {
+337        if (choice.equals("MNFP")) {
+341        if (choice.equals("Minimal-MUMCUT") || choice.equals("NFP")) {
+345        if (!choice.equals("NFP") && (alphaExpression.length() == 1 || alphaExpression.indexOf(" + ") == -1 || isEveryTermAOneLiteralTerm())) {
+351            if (!choice.equals("NFP")) {
+364            for (int i = 0; i < alphaTerms.length; i++) {
+366                if (!choice.equals("NFP")) {
+370                if (isTermMutpFeasible[i] || choice.equals("NFP")) {
+372                    for (int t = 0; t < term.length(); t++) {
+379                        for (String nfp : nfps) {
+380                            if (!nfpCountMap.containsKey(nfp)) {
+391                    for (int t = 0; t < term.length(); t++) {
+392                        if (isCutpnfpFeasible(term, term.substring(t, t + 1))) {
+398                            for (String utp : utps) {
+399                                if (index != uniqueLiterals.length() - 1) {
+405                                for (String nfp : nfps) {
+408                                    if (index != uniqueLiterals.length() - 1) {
+414                                    if (utp.equals(nfp)) {
+416                                        if (!nfpMap.containsKey(key)) {
+428                                            if (intVal == null) intVal = 0;
+442                            for (int x = 0; x < term.length(); x++) {
+446                            for (String nfp : nfps) {
+449                                for (int x = 0; x < nfp.length(); x++) {
+450                                    if (!indicesOfLiterals.contains(x)) {
+459                            for (String abbrevPoint : abbrevPointsForTerm) {
+464                                for (int x = 0; x < uniqueLiterals.length(); x++) {
+465                                    if (term.toLowerCase().indexOf(uniqueLiterals.substring(x, x + 1)) != -1) {
+476                                        if (Character.isUpperCase(alphabetize(term).charAt(termIndex))) {
+488                                if (!mnfpMap.containsKey(key)) {
+504            if (doSmotp) createLifLifMutants(false);
+515            for (String mnfpKey : mnfpMap.keySet()) {
+518                for (String mnfp : mnfps) {
+523                    for (String nfpKey : nfpMap.keySet()) {
+526                        if (nfps.contains(mnfp)) {
+533                    if (point.endsWith(", ")) point = point.substring(0, point.length() - 2);
+534                    if (!pointsMap.containsKey(mnfp)) {
+540                    if (mutants.add(alphaExpression + " + " + convertPointToTerm(mnfp))) numTifs++;
+542                    for (String keyToRemove : keysToRemove) {
+545                        for (String nfp : nfps) {
+547                            if (intVal != null) {
+564            for (String nfpMapKey : nfpMap.keySet()) {
+567                for (String nfpPoint : nfpMap.get(nfpMapKey)) {
+568                    if (pointsMap.keySet().contains(nfpPoint)) {
+573                if (!literalCovered) {
+574                    for (String nfpPoint : nfpMap.get(nfpMapKey)) {
+592            for (String key : keys) {
+597            if (doSmotp) {
+600                for (String mutant : lifLifMutants) {
+607                for (String key : lifLifPoints.keySet()) {
+617            for (String mutant : mutants) {
+669        if (mutatedTerms != null) {
+675        for (int i = 0; i < terms.length; i++) {
+678            for (int j = 0; j < alphaTerm.length(); j++) {
+681                if (Character.isUpperCase(alphaTerm.charAt(j))) {
+682                    if (input.substring(index, index + 1).equals("1")) continue outer;
+684                    if (input.substring(index, index + 1).equals("0")) continue outer;
+695        if (input.indexOf("!") == -1) return input;
+696        for (int j = 0; j < input.length(); j++) {
+697            if (input.charAt(j) == '!') {
+698                if (j == input.length() - 2) temp = "";
+713        if (term.length() == uniqueLiterals.length() || term.length() == 1) return;
+718        for (int i = 0; i < alphaTerms.length; i++) {
+719            if (alphaTerms[i].length() == 1) {
+723        for (int j = 0; j < literalsNotInTerm.length(); j++) {
+724            for (int k = 0; k < 2; k++) {
+725                String mutant = k == 0 ? alphaExpression.replace(term, term + literalsNotInTerm.substring(j, j + 1))
+729                for (String bs : utpsMap.get(term)) {
+730                    if (!isATruePoint(bs, mutant)) {
+735                if (!detected) {
+737                    String literalToAdd = k == 0 ? literalsNotInTerm.substring(j, j + 1) : literalsNotInTerm.substring(j, j + 1).toUpperCase();
+748        for (int i = 0; i < s.length(); i++) {
+749            if (Character.isLowerCase(s.charAt(i))) ret = ret + s.substring(i, i + 1).toUpperCase();
+760        for (int i = 0; i < lower.length(); i++) {
+761            if (s.indexOf(lower.substring(i, i + 1)) != -1) ret = ret + lower.substring(i, i + 1);
+762            else if (s.indexOf(upper.substring(i, i + 1)) != -1) ret = ret + upper.substring(i, i + 1);
+770        while (s.length() < length) s = "0" + s;
+777        for (int i = 0; i < term2.length(); i++) {
+778            if (term1.indexOf(term2.substring(i, i + 1)) == -1) ret = ret + term2.substring(i, i + 1);
+786        if (semicolonSepInf.equals("")) return true;
+790        for (int i = 0; i < point.length(); i++) {
+791            if (point.substring(i, i + 1).equals("1")) {
+801        for (String infVal : infVals) {
+802            for (int i = 0; i < infVal.length(); i++) {
+803                if (pointAsTerm.indexOf(infVal.substring(i, i + 1)) == -1) {
+817        for (int i = 0; i < term.length(); i++) {
+819            if (Character.isUpperCase(term.charAt(i))) valuesThatMustHold[index] = "0";
+823        while (binaryStringsIter.hasNext()) {
+825            for (int i = 0; i < valuesThatMustHold.length; i++) {
+826                if (valuesThatMustHold[i] != null) {
+827                    if (i != valuesThatMustHold.length - 1) {
+838        if (alphaTerms == null) {
+841        while (tpsIter.hasNext()) {
+844            for (int i = 0; i < alphaTerms.length; i++) {
+845                if (alphaTerms[i].equals(term)) {
+849                for (int j = 0; j < alphaTerms[i].length(); j++) {
+861            for (int i = 0; i < isAlphaTermFalse.length; i++) {
+862                if (!isAlphaTermFalse[i]) {
+867            if (areAllTermsFalse && isPointFeasible(tp)) utps.add(tp);
+876        for (int i = 0; i < input.length(); i++) {
+877            if (Character.isUpperCase(input.charAt(i))) {
+891        if (type.equals("MUTP") || type.equals("CUTPNFP") || type.equals("MNFP")) {
+900        if (alphaTerms.length == 1 && alphaTerms[0].length() == 1) {
+910            } else if (type.equals("MUTP") || type.equals("MNFP") || type.equals("NFP")) {
+912                if (type.equals("MUTP")) point = alphaTerms[0].equals("a") ? "x1" : "x0";
+912                if (type.equals("MUTP")) point = alphaTerms[0].equals("a") ? "x1" : "x0";
+921        } else if (alphaTerms.length == 1) {
+924            if (!type.equals("MNFP") && !type.equals("NFP")) {
+925                for (String bs : allUtps) {
+929            if (!type.equals("MUTP")) {
+930                for (String bs : allNfps) {
+937            for (String bs : _binaryStrings) {
+938                if (s.indexOf(bs) != -1) {
+947        } else if (isEveryTermAOneLiteralTerm()) {
+950            if (!type.equals("MUTP")) {
+951                for (String bs : allNfps) {
+956            if (!type.equals("MNFP") && !type.equals("NFP")) {
+957                for (String bs : allUtps) {
+964            for (String bs : _binaryStrings) {
+965                if (s.indexOf(bs) != -1) {
+979            for (int i = 0; i < alphaTerms.length; i++) {
+980                if (alphaTerms[i].length() == uniqueLiterals.length()) {
+981                    if (!type.equals("MNFP") && !type.equals("NFP")) {
+982                        for (String bs : utpsMap.get(alphaTerms[i])) {
+987                    if (!type.equals("MUTP")) {
+988                        for (int z = 0; z < alphaTerms[i].length(); z++) {
+989                            for (String bs : nfpsMap.get(alphaTerms[i] + "_" + alphaTerms[i].substring(z, z + 1))) {
+1004					 for (int z=0; z < literalsNotInTerm.length(); z++)
+1011	                     for (String point : utpsOrNfps)
+1021		                for (String key : constraintMap.keySet())
+1037				else if (type.equals("MNFP"))
+1043				       for (int z=0; z < literalsNotInTerm.length(); z++)
+1052                           for (String point : utpsOrNfps)
+1062	                for (String key : constraintMap.keySet())
+1080                    if (type.equals("MUTP")) {
+1085                        for (String trfMutant : trfMutants) {
+1086                            for (String bs : utpsMap.get(alphaTerms[i])) {
+1087                                if (!isATruePoint(bs, reverseConvertAlphaExpression(trfMutant, false))) {
+1094                        if (!isTermMutpFeasible[i]) {
+1099                    else if (type.equals("MNFP")) {
+1102                        for (int z = 0; z < literalsNotInTerm.length(); z++) {
+1105                            for (String lrf : lrfs) {
+1112                                    if (isATruePoint(bs, lrf)) {
+1119                                if (type.equals("MNFP") && isLrfEquiv)
+1122                                if (!constraint.equals("") && constraintSet.add(constraint) && constraint.endsWith(" + "))
+1126                        for (int z = 0; z < literalsNotInTerm.length(); z++) {
+1129                            for (String lrf : lrfs) {
+1136                                    if (isATruePoint(bs, lrf)) {
+1144                                if (type.equals("MFNP") && isLrfEquiv)
+1146                                if (!constraint.equals("") && constraintSet.add(constraint) && constraint.endsWith(" + "))
+1150                    } else if (type.equals("CUTPNFP")) {
+1154                        for (String utp : utps) {
+1158                            for (int z = 0; z < alphaTerms[i].length(); z++) {
+1165                                for (String nfp : nfps) {
+1168                                    for (int u = 0; u < utp.length(); u++) {
+1169                                        if (nfp.substring(u, u + 1).equals(utp.substring(u, u + 1))) {
+1173                                    if (count == nfp.length() - 1) {
+1180                                if (!feasible) {
+1188                        for (String utp : utps) {
+1191                        if (isLrfEquiv) feasibilityText = "CUTPNFP is not feasible for all literals.";
+1191                        if (isLrfEquiv) feasibilityText = "CUTPNFP is not feasible for all literals.";
+1192                        if (s.endsWith(" + "))
+1194                    } else if (type.equals("NFP")) {
+1195                        if (alphaTerms[i].length() != 1) {
+1198                            for (String lof : lofs) {
+1199                                for (String bs : nfpsTermMap.get(alphaTerms[i])) {
+1200                                    if (isATruePoint(bs, lof)) {
+1212                        for (String trfMutant : trfMutants) {
+1213                            for (String bs : utpsMap.get(alphaTerms[i])) {
+1214                                if (!isATruePoint(bs, reverseConvertAlphaExpression(trfMutant, false))) {
+1221                        if (!isTermMutpFeasible[i]) {
+1224                            for (int x = 0; x < extLiterals.length(); x++) {
+1227                                for (String lrf : lrfs) {
+1230                                    for (String bs : nfpsTermMap.get(alphaTerms[i])) {
+1231                                        if (isATruePoint(bs, lrf)) {
+1236                                    if (!lrfEquiv) {
+1242                                        for (int k = 0; k < alphaTerms[i].length(); k++) {
+1243                                            if (lrfTerm.indexOf(alphaTerms[i].substring(k, k + 1)) == -1) {
+1249                                        for (String bs : nfpsMap.get(alphaTerms[i] + "_" + literal)) {
+1256                        } else if (alphaTerms[i].length() != 1) {
+1259                            for (String lof : lofs) {
+1260                                for (String bs : nfpsTermMap.get(alphaTerms[i])) {
+1261                                    if (isATruePoint(bs, lof)) {
+1271            if (type.indexOf("SMOTP") != -1) {
+1272                for (int x = 0; x < alphaTerms.length; x++) {
+1275                for (int x = 0; x < alphaTerms.length; x++) {
+1281                    for (String point : lifLifPoints.keySet()) {
+1283                        if (oldTermsInLifLif == null || newTermsInLifLif.equals(oldTermsInLifLif)) {
+1286                            if (s.endsWith(" + "))
+1291                    if (s.endsWith(" + "))
+1300            for (String bs : _binaryStrings) {
+1301                if (s.indexOf(bs) != -1) {
+1309            for (int x = 1; x <= Mcount; x++) {
+1325        for (int j = 0; j < uniqueLiterals.length(); j++) {
+1326            if (term.toLowerCase().indexOf(uniqueLiterals.substring(j, j + 1)) == -1) {
+1339        if (alphaTerms.length == 1 && alphaTerms[0].length() == 1) {
+1345        } else if (alphaTerms.length == 1) {
+1349            for (String bs : allUtps) {
+1363            for (String key : keySet) {
+1376            for (String bs : _binaryStrings) {
+1383        } else if (isEveryTermAOneLiteralTerm()) {
+1387            for (String bs : allNfps) {
+1403            for (String key : keySet) {
+1417            for (String bs : _binaryStrings) {
+1441            for (String key : keySet) {
+1454            for (String bs : _binaryStrings) {
+1483        while (xIndex != -1) {
+1484            if (contents.indexOf("1.0", xIndex) < contents.indexOf("0.0", xIndex)) {
+1494        if (type.equals("Fault Detection Maximization")) {
+1520        for (String term : overlapTermsSet) {
+1521            for (int x = 0; x < uniqueLiterals.length(); x++) {
+1522                if (term.toLowerCase().indexOf(uniqueLiterals.substring(x, x + 1)) == -1) {
+1523                    if (point.substring(x, x + 1).equals("0")) {
+1548        for (int i = 0; i < terms.length; i++) {
+1551            if (!type.equals("MNFP") && utpsMap.get(term).contains(point)) {
+1553                if (term.length() == uniqueLiterals.length()) {
+1554                    if (terms.length == 1) {
+1557                    } else if (i < terms.length - 1) {
+1571            if (!type.equals("MUTP")) {
+1574                for (int j = 0; j < term.length(); j++) {
+1575                    if (nfpsMap.get(term + "_" + term.substring(j, j + 1)).contains(point)) {
+1581                if (!isANfp && type.indexOf("SMOTP") != -1) {
+1584                    if (!overlapTerms.equals("")) {
+1588                        for (String overlapTerm : overlapTerms.split(",")) {
+1589                            if (overlapTermsSet.add(overlapTerm)) {
+1597        if (!nfpText.equals(" - NFP for ")) {
+1597        if (!nfpText.equals(" - NFP for ")) {
+1599            if ((terms.length == 1 && terms[0].length() == 1) || isEveryTermAOneLiteralTerm()) {
+1607        if (!otpText.equals(" - OTP for ")) {
+1607        if (!otpText.equals(" - OTP for ")) {
+1617        if (!isATruePoint(point, null)) return "";
+1619        if (utpsMap.get(term).contains(point)) return "";
+1624        for (String alphaTerm : alphaExpression.split(" \\+ ")) {
+1625            if (!reachedTerm && !alphaTerm.equals(term)) continue;
+1628            if (!term.equals(alphaTerm) && isATruePoint(point, alphaTerm + term)) {
+1632        if (overlapTerms.equals("")) return "";
+1645            while (true) {
+1646                if (fileReader.read() == -1) break;
+1652            for (int j = 0; j < buf.length; j++) {
+1700        for (int i = 0; i < alphaTerms.length; i++) {
+1703            if (term.length() == 1) continue;
+1705            for (int j = 0; j < term.length(); j++) {
+1710                for (String bs : nfpsMap.get(alphaTerms[i] + "_" + term.substring(j, j + 1))) {
+1720        for (int i = 0; i < alphaTerms.length; i++) {
+1724            for (int j = 0; j < term.length(); j++) {
+1728                if (j < term.length() - 1) {
+1736                for (String bs : _binaryStrings) {
+1737                    if (!isATruePoint(bs, null) && isATruePoint(bs, mutant)) {
+1750        for (String bs : _binaryStrings) {
+1758        for (int i = 0; i < alphaTerms.length; i++) {
+1763            for (int j = 0; j < term.length(); j++) {
+1785        for (int i = 0; i < alphaTerms.length; i++) {
+1790            if (i < alphaTerms.length - 1) {
+1798            for (String bs : allUtps) {
+1799                if (!isATruePoint(bs, mutant)) {
+1809        for (int i = 0; i < alphaTerms.length; i++) {
+1815            for (String bs : utpsMap.get(term)) {
+1824        for (int i = 0; i < alphaTerms.length; i++) {
+1829            for (int j = 0; j < literalsNotInTerm.length(); j++) {
+1833                for (String bs : utpsMap.get(term)) {
+1834                    if (!isATruePoint(bs, mutant)) {
+1838                if (!points.equals("")) {
+1844            for (int j = 0; j < literalsNotInTerm.length(); j++) {
+1848                for (String bs : utpsMap.get(term)) {
+1849                    if (!isATruePoint(bs, mutant)) {
+1853                if (!points.equals("")) {
+1863        for (int i = 0; i < alphaTerms.length; i++) {
+1868            for (int j = 0; j < term.length(); j++) {
+1872                for (int k = 0; k < literalsNotInTerm.length(); k++) {
+1873                    if (j < term.length() - 1) {
+1889                    if (!points.equals("")) {
+1895                for (int k = 0; k < literalsNotInTerm.length(); k++) {
+1896                    if (j < term.length() - 1) {
+1912                    if (!points.equals("")) {
+1923        for (int i = 0; i < alphaTerms.length; i++) {
+1926            if (term.length() == 1) continue;
+1928            for (int j = 0; j < term.length(); j++) {
+1932                if (j < term.length() - 1) {
+1947                if (!points.equals(""))
+1958        for (int i = 0; i < alphaTerms.length; i++) {
+1961            for (int j = 0; j < literals.length(); j++) {
+1973        for (int i = 0; i < term.length(); i++) {
+1989        for (int i = 0; i < length; i++) {
+1990            if (i < length - 1) {
+2001        if (index != alphaExpression.split(" \\+ ").length - 1) {
+2017        for (int i = 0; i < alphaTerms.length; i++) {
+2018            if (index != i && index != -1) continue;
+2025            for (int t = 0; t < term.length(); t++) {
+2029            for (String utp : utps) {
+2032                for (int t = 0; t < utp.length(); t++) {
+2033                    if (!indicesOfLiterals.contains(t)) {
+2042            if (!isMutpOrMnfpFeasible(abbrevPointsForTerm, uniqueLiterals.length() - term.length())) isFeasible = false;
+2044            for (String abbrevPoint : abbrevPointsForTerm) {
+2050                for (int x = 0; x < uniqueLiterals.length(); x++) {
+2051                    if (term.toLowerCase().indexOf(uniqueLiterals.substring(x, x + 1)) != -1) {
+2053                        if (Character.isUpperCase(alphabetize(term).charAt(termIndex))) {
+2061                        if (abbrevPoint.substring(abbrevPointIndex, abbrevPointIndex + 1).equals("0")) {
+2070                if (term.length() == uniqueLiterals.length() && alphaTerms.length != 1) {
+2071                    if (i < alphaTerms.length - 1) {
+2072                        if (mutants.add(alphaExpression.replace(term + " + ", ""))) if (!forModel) numTofs++;
+2074                        if (mutants.add(alphaExpression.replace(" + " + term, ""))) if (!forModel) numTofs++;
+2076                } else if (alphaTerms.length != 1) {
+2077                    if (i < alphaTerms.length - 1) {
+2078                        if (mutants.add(alphaExpression.replace(term + " + ", mutant))) if (!forModel) numTrfs++;
+2080                        if (mutants.add(alphaExpression.replace(term, mutant.substring(0, mutant.length() - 3))))
+2081                            if (!forModel) numTrfs++;
+2087        if (alphaTerms.length == 1) {
+2094            for (String mutant : mutants) {
+2097            if (forModel) return text.substring(0, text.length() - 1);
+2106        for (String key : keys) {
+2112        if (!isFeasible) {
+2115        if (outputStats) {
+2122        if (outputStats) {
+2141        if (input.equals("(false)") || input.equals("(true)")) return input;
+2146        for (String term : terms) {
+2147            for (int i = 0; i < term.length(); i++) {
+2148                if (Character.isUpperCase(term.charAt(i))) {
+2167        for (int i = 0; i < terms.length; i++) {
+2169            for (int j = 0; j < literals.length; j++) {
+2171                if (literals[j].charAt(0) == '!') {
+2181        if (updateInfVals) updateCommaSepInfVals();
+2194        for (String utp : utps) {
+2195            for (String nfp : nfps) {
+2198                for (int u = 0; u < utp.length(); u++) {
+2199                    if (nfp.substring(u, u + 1).equals(utp.substring(u, u + 1))) {
+2203                if (count == nfp.length() - 1) {
+2220        for (int i = 0; i < alphaTerms.length; i++) {
+2224            for (int t = 0; t < term.length(); t++) {
+2230                for (String utp : utps) {
+2235                    for (String nfp : nfps) {
+2239                        for (int u = 0; u < utp.length(); u++) {
+2240                            if (nfp.substring(u, u + 1).equals(utp.substring(u, u + 1))) {
+2252                            if (!pointsMap.containsKey(nfp)) {
+2262                                if (alphaTerms.length == 1) {
+2263                                    if (mutants.add("(false)")) numFalse++;
+2264                                } else if (i < alphaTerms.length - 1) {
+2265                                    if (mutants.add(alphaExpression.replace(term + " + ", ""))) numTofs++;
+2267                                    if (mutants.add(alphaExpression.replace(" + " + term, ""))) numTofs++;
+2269                                if (mutants.add(alphaExpression + " + " + convertPointToTerm(nfp))) numTifs++;
+2271                            } else if (alphaTerms.length > 1) {
+2274                                for (int z = 0; z < uniqueLiterals.length(); z++) {
+2275                                    if (term.toLowerCase().indexOf(uniqueLiterals.substring(z, z + 1)) == -1) {
+2276                                        if (utp.substring(z, z + 1).equals("1")) {
+2284                                for (int z = 0; z < extLiterals.length(); z++) {
+2288                                if (i < alphaTerms.length - 1) {
+2289                                    if (mutants.add(alphaExpression.replace(term + " + ", mutant))) numTrfs++;
+2291                                    if (mutants.add(alphaExpression.replace(term, mutant.substring(0, mutant.length() - 3))))
+2294                                if (mutants.add(alphaExpression + " + " + convertPointToTerm(nfp))) numTifs++;
+2305        for (String key : keys) {
+2311        if (!isFeasible) {
+2314        if (forCutpnfp) {
+2322        if (alphaTerms.length == 1 && alphaTerms[0].length() == 1) {
+2330            for (String mutant : mutants) {
+2354        for (int i = 0; i < point.length(); i++) {
+2355            if (point.substring(i, i + 1).equals("0")) {
+2368        if (Character.isUpperCase(literal.charAt(0))) {
+2376        for (String binaryString : allBinaryStrings) {
+2377            for (int t = 0; t < fixedLiterals.length(); t++) {
+2380                if (Character.isUpperCase(fixedLiterals.charAt(t))) {
+2381                    if (indexToReplace != binaryString.length() - 1) {
+2387                    if (indexToReplace != binaryString.length() - 1) {
+2395            if (!isATruePoint(binaryString, null) && isPointFeasible(binaryString)) {
+2409        for (String term : alphaTerms) {
+2410            for (int t = 0; t < term.length(); t++) {
+2415                for (int x = 0; x < term.length(); x++) {
+2422                for (String nfp : nfps) {
+2425                    for (int x = 0; x < nfp.length(); x++) {
+2426                        if (!indicesOfLiterals.contains(x)) {
+2436                if (!isMutpOrMnfpFeasible(abbrevPointsForTerm, uniqueLiterals.length() - term.length())) {
+2440                for (String abbrevPoint : abbrevPointsForTerm) {
+2445                    for (int x = 0; x < uniqueLiterals.length(); x++) {
+2446                        if (term.toLowerCase().indexOf(uniqueLiterals.substring(x, x + 1)) != -1) {
+2457                            if (Character.isUpperCase(alphabetize(term).charAt(termIndex))) {
+2468                    if (!pointsMap.containsKey(point)) {
+2473                    if (alphaTerms.length > 1 || alphaTerms[0].length() > 1) {
+2474                        if (mutants.add(alphaExpression + " + " + convertPointToTerm(point))) numTifs++;
+2483        for (String key : keys) {
+2489        if (!isFeasible) {
+2497        if (alphaTerms.length == 1 && alphaTerms[0].length() == 1) {
+2504            for (String mutant : mutants) {
+2531        if (binaryStrings.size() == 1 || binaryStrings.size() == 2) {
+2532            for (String binaryString : binaryStrings) {
+2537        for (int x = 0; x < binaryStrings.size(); x++) {
+2541            for (int i = 0; i < state.length; i++) state[i] = NONE;
+2547            for (int i = 0; i < state.length; i++) state[i] = stateUpdate(i, state[i], selectedBinaryString);
+2550                for (int i = 0; i < selected.length; i++) {
+2551                    if (!selected[i]) {
+2554                        for (int j = 0; j < state.length; j++) {
+2565                for (int i = 0; i < selected.length; i++) {
+2566                    if (abbrevNfpCountMap != null) {
+2567                        if (!selected[i] && count[i] == max) {
+2568                            if (abbrevNfpCountMap.get(binaryStrings.get(i)) > maxOverlapToBreakTies) {
+2573                        } else if (!selected[i] && count[i] > max) {
+2578                        if (!selected[i] && count[i] > max) {
+2584                if (max > 0) {
+2588                    for (int i = 0; i < state.length; i++) state[i] = stateUpdate(i, state[i], selectedBinaryString);
+2591            while (max != 0 && !allSelected(selected) && !isMUTPAchieved(state));
+2599        for (Set<String> s : pointSets) {
+2600            if (first) min = s;
+2602            else if (s.size() < min.size()) min = s;
+2614        for (String s : binaryStrings) {
+2615            for (int i = 0; i < s.length(); i++) {
+2616                if (s.substring(i, i + 1).equals("0")) equalsZero[i] = true;
+2620        for (boolean b : equalsZero) {
+2621            if (!b) return false;
+2623        for (boolean b : equalsOne) {
+2624            if (!b) return false;
+2632        if (oldState == NONE && selectedBinaryString.substring(i, i + 1).equals("0")) newState = ZERO;
+2633        else if (oldState == NONE && selectedBinaryString.substring(i, i + 1).equals("1")) newState = ONE;
+2634        else if (oldState == ZERO && selectedBinaryString.substring(i, i + 1).equals("1")) newState = BOTH;
+2635        else if (oldState == ONE && selectedBinaryString.substring(i, i + 1).equals("0")) newState = BOTH;
+2641        for (int i = 0; i < selected.length; i++) if (!selected[i]) return false;
+2641        for (int i = 0; i < selected.length; i++) if (!selected[i]) return false;
+2647        for (int i = 0; i < state.length; i++) if (state[i] != BOTH) return false;
+2647        for (int i = 0; i < state.length; i++) if (state[i] != BOTH) return false;
+2654        for (int i = 0; i < alphaTerms.length; i++) {
+2655            if (alphaTerms[i].length() != 1) return false;
+2670        for (int i = termIndex; i < alphaTerms.length - 1; i++) {
+2673            if (isTermMutpFeasible[i]) continue;
+2675            for (int j = i + 1; j < alphaTerms.length; j++) {
+2678                if (isTermMutpFeasible[j]) continue;
+2683                for (int k = 0; k < infLiteralsForTerm1.length(); k++) {
+2686                    for (int l = 0; l < infLiteralsForTerm2.length(); l++) {
+2691                        for (String bs : allOtps) {
+2692                            if (!isATruePoint(bs, mutant)) {
+2693                                if (forMinimization) {
+2696                                    if (!otpMap.containsKey("term " + convertUppercaseToNegation(term1) + " and term " + convertUppercaseToNegation(term2))) {
+2705                                    if (!countMap.containsKey(bs)) countMap.put(bs, 1);
+2711                                    if (!lifLifTerms.containsKey(bs)) {
+2723            if (forMinimization) break;
+2725        if (!forMinimization && otpMap.size() != 0) {
+2737            for (String val : vals) {
+2756        if (!semicolonSepInf.equals("")) {
+2759            for (int i = 0; i < commaSepInf.length; i++) {
+2762                for (int j = 0; j < individuals.length; j++) {
+2763                    if (individuals[j].indexOf("=0") != -1) {
+2795        for (String cloneCountKey : cloneCountKeys) {
+2804            for (String cloneNfpOrOtpKey : cloneNfpOrOtpKeys) {
+2805                if (nfpOrOtpMap.get(cloneNfpOrOtpKey).contains(cloneCountKey)) {
+2808                    if (!pointsMapClone.containsKey(cloneCountKey)) {
+2816            while (nfpOrOtpMap.keySet().size() != 0) {
+2822                for (String key : countKeySet) {
+2825                    if (count > max) {
+2831                if (maxKey == null) break;
+2841                for (String key : nfpOrOtpKeySet) {
+2842                    if (nfpOrOtpMap.get(key).contains(maxKey)) {
+2848                if (keysToRemove.size() == 0) {
+2852                if (point.endsWith(", ")) point = point.substring(0, point.length() - 2);
+2855                if (type.equals("NFP")) {
+2862                    for (String val : vals) {
+2870                for (String key : keysToRemove) {
+2873                    for (String nfpOrOtp : nfpOrOtps) {
+2875                        if (intVal != null) {
+2884            if (pointsMapClone.size() < min) {
+
+Multiple keywords or lines: 467                                        if (term.substring(t, t + 1).toLowerCase().equals(uniqueLiterals.substring(x, x + 1)) &&
+471                                        } else if (term.substring(t, t + 1).toLowerCase().equals(uniqueLiterals.substring(x, x + 1)) &&
+851                    if (tp.substring(index, index + 1).equals("0") &&
+901            if (type.equals("Minimal-MUMCUT") || type.equals("Minimal-MUMCUT/SMOTP") ||
+1774                if ((!isATruePoint(bs, null) && isATruePoint(bs, mutant)) ||
+1884                        if ((isATruePoint(bs, null) && !isATruePoint(bs, mutant)) ||
+1907                        if ((isATruePoint(bs, null) && !isATruePoint(bs, mutant)) ||
+1942                    if ((!isATruePoint(bs, null) && isATruePoint(bs, mutant)) ||
+2244                        if (count == nfp.length() - 1 ||
+2246                            if (innerLoopCounter == nfps.size() && outerLoopCounter == utps.size() &&
+2260                            if (term.length() == uniqueLiterals.length() &&
+2448                            if (term.substring(t, t + 1).toLowerCase().equals(uniqueLiterals.substring(x, x + 1)) &&
+2452                            } else if (term.substring(t, t + 1).toLowerCase().equals(uniqueLiterals.substring(x, x + 1)) &&
+2555                            if (state[j] == NONE ||
+
+Clause amount: 1 clause has 456statements:
+58
+64
+73
+89
+143
+159
+160
+182
+183
+187
+188
+194
+195
+199
+200
+201
+202
+205
+215
+218
+219
+230
+235
+240
+241
+249
+251
+258
+259
+263
+266
+269
+272
+282
+284
+301
+305
+309
+313
+317
+321
+325
+329
+333
+337
+351
+364
+366
+372
+379
+380
+391
+392
+398
+399
+405
+408
+414
+416
+428
+442
+446
+449
+450
+459
+464
+465
+476
+488
+504
+515
+518
+523
+526
+533
+534
+540
+542
+545
+547
+564
+567
+568
+573
+574
+592
+597
+600
+607
+617
+669
+675
+678
+681
+682
+684
+695
+696
+697
+698
+718
+719
+723
+724
+725
+729
+730
+735
+737
+748
+749
+760
+761
+762
+770
+777
+778
+786
+790
+791
+801
+802
+803
+817
+819
+823
+825
+826
+827
+838
+841
+844
+845
+849
+861
+862
+876
+877
+912
+912
+921
+925
+929
+930
+937
+938
+947
+950
+951
+957
+964
+965
+979
+980
+982
+987
+988
+989
+1004					
+1011	
+1021		
+1037				else
+1043				
+1052
+1062	
+1080
+1085
+1086
+1087
+1094
+1099
+1102
+1105
+1112
+1126
+1129
+1136
+1150
+1154
+1158
+1165
+1168
+1169
+1173
+1180
+1188
+1191
+1191
+1192
+1194
+1195
+1198
+1199
+1200
+1212
+1213
+1214
+1221
+1224
+1227
+1230
+1231
+1236
+1242
+1243
+1249
+1256
+1259
+1260
+1261
+1271
+1272
+1275
+1281
+1286
+1291
+1300
+1301
+1309
+1325
+1326
+1345
+1349
+1363
+1376
+1383
+1387
+1403
+1417
+1441
+1454
+1483
+1484
+1494
+1520
+1521
+1522
+1523
+1548
+1553
+1554
+1557
+1571
+1574
+1575
+1584
+1588
+1589
+1597
+1597
+1607
+1607
+1617
+1619
+1624
+1632
+1645
+1646
+1652
+1700
+1703
+1705
+1710
+1720
+1724
+1728
+1736
+1750
+1758
+1763
+1785
+1790
+1798
+1799
+1809
+1815
+1824
+1829
+1833
+1834
+1838
+1844
+1848
+1849
+1853
+1863
+1868
+1872
+1873
+1889
+1895
+1896
+1912
+1923
+1926
+1928
+1932
+1947
+1958
+1961
+1973
+1989
+1990
+2001
+2017
+2025
+2029
+2032
+2033
+2042
+2044
+2050
+2051
+2053
+2061
+2071
+2072
+2074
+2076
+2077
+2078
+2080
+2081
+2087
+2094
+2097
+2106
+2112
+2115
+2122
+2146
+2147
+2148
+2167
+2169
+2171
+2181
+2194
+2195
+2198
+2199
+2203
+2220
+2224
+2230
+2235
+2239
+2240
+2252
+2262
+2263
+2264
+2265
+2267
+2269
+2271
+2274
+2275
+2276
+2284
+2288
+2289
+2291
+2294
+2305
+2311
+2314
+2330
+2354
+2355
+2368
+2376
+2377
+2380
+2381
+2387
+2409
+2410
+2415
+2422
+2425
+2426
+2436
+2440
+2445
+2446
+2457
+2468
+2474
+2483
+2489
+2504
+2532
+2537
+2541
+2547
+2550
+2551
+2554
+2565
+2566
+2568
+2584
+2588
+2599
+2600
+2602
+2614
+2615
+2616
+2620
+2621
+2623
+2624
+2641
+2641
+2647
+2647
+2654
+2655
+2670
+2673
+2675
+2678
+2683
+2686
+2691
+2692
+2693
+2696
+2705
+2711
+2723
+2737
+2756
+2759
+2762
+2763
+2795
+2804
+2805
+2808
+2816
+2822
+2825
+2831
+2841
+2842
+2848
+2852
+2855
+2862
+2870
+2873
+2875
+2884
+
+2 clause has 35statements:
+81
+82
+341
+370
+713
+867
+900
+924
+956
+981
+1119
+1144
+1283
+1339
+1551
+1581
+1625
+1628
+1737
+2018
+2070
+2141
+2322
+2395
+2473
+2497
+2531
+2567
+2573
+2578
+2632
+2633
+2634
+2635
+2725
+
+3 clause has 9statements:
+285
+287
+291
+891
+910
+1122
+1146
+1599
+2591
+
+4 clause has 1statements:
+345
+
